@@ -6,7 +6,8 @@ from PIL import Image, UnidentifiedImageError
 main_folder = "data"  # change this
 
 # Allowed image filenames (lowercase only)
-allowed_files = {"cropped_garment.jpg", "reference_compiler_upscaled.jpg", "output_turbo.png", "output_wan.png"}
+allowed_files = {"cropped_garment.jpg", "reference_compiler_upscaled.jpg", "output_turbo.png", "output_wan.png",
+                 "output_wan_upgrade.png"}
 
 st.title("WAN FIGHT")
 st.set_page_config(layout="wide")
