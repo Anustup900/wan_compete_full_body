@@ -5,12 +5,16 @@ from PIL import Image, UnidentifiedImageError
 # Set the main directory
 main_folder = "data"  # change this
 
-# Allowed image filenames (lowercase only)
-allowed_files = {"cropped_garment.jpg", "reference_compiler_upscaled.jpg", "output_turbo.png", "output_wan.png",
-                 "output_wan_upgrade.png"}
+# Allowed image filenames in the exact order you want
+allowed_files = [
+    "cropped_garment.jpg",
+    "reference_compiler_upscaled.jpg",
+    "output_turbo.png",
+    "output_wan_upgrade.png",
+]
 
-st.title("WAN FIGHT")
 st.set_page_config(layout="wide")
+st.title("WAN FIGHT")
 
 for folder_name in sorted(os.listdir(main_folder)):
     folder_path = os.path.join(main_folder, folder_name)
@@ -18,17 +22,17 @@ for folder_name in sorted(os.listdir(main_folder)):
     if os.path.isdir(folder_path):
         st.subheader(folder_name)
 
-        # Filter only specific files (case-insensitive)
+        # Filter files and maintain allowed_files order
         image_files = [
-            f for f in sorted(os.listdir(folder_path))
-            if f.lower() in {name.lower() for name in allowed_files}
+            f for f in allowed_files
+            if f.lower() in {name.lower() for name in os.listdir(folder_path)}
         ]
 
         if not image_files:
             st.info("No matching images in this folder.")
             continue
 
-        # Display in horizontal columns
+        # Display in horizontal columns (order preserved)
         cols = st.columns(len(image_files))
 
         for idx, file_name in enumerate(image_files):
