@@ -11,6 +11,7 @@ allowed_files = [
     "reference_compiler_upscaled.jpg",
     "output_turbo.png",
     "output_wan_upgrade.png",
+    "wan_single_image.png"
 ]
 
 st.set_page_config(layout="wide")
